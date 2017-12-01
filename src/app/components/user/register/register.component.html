@@ -1,0 +1,108 @@
+<div class="container" *ngIf="!_user.getUser()">
+    <form class="form-horizontal" role="form" [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)">
+      <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+              <h2>Register New User</h2>
+              <hr>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3 field-label-responsive">
+              <label for="name">Name</label>
+          </div>
+          <div class="col-md-6">
+              <div class="form-group">
+                  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                      <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                      <input type="text" name="name" class="form-control" id="name"
+                             placeholder="Diederik Boer" formControlName="name" required autofocus>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-3" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">
+              <div class="form-control-feedback">
+                      <span class="text-danger align-middle">
+                          <i class="fa fa-close">Please enter your name here. <br/>At least five characters long.</i>
+                      </span>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3 field-label-responsive">
+              <label for="email">E-Mail Address</label>
+          </div>
+          <div class="col-md-6">
+              <div class="form-group">
+                  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                      <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                      <input type="text" name="email" class="form-control" id="email"
+                             placeholder="you@example.com" formControlName="email" required autofocus>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-3" *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched">
+              <div class="form-control-feedback">
+                      <span class="text-danger align-middle">
+                          <i class="fa fa-close">Please enter a valid emailadress</i>
+                      </span>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3 field-label-responsive">
+              <label for="password">Password</label>
+          </div>
+          <div class="col-md-6">
+              <div class="form-group has-danger">
+                  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                      <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                      <input type="password" name="password" class="form-control" id="password"
+                             placeholder="Password" formControlName="password" required>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-3" *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched">
+              <div class="form-control-feedback">
+                      <span class="text-danger align-middle">
+                          <i class="fa fa-close"> Enter a password between 10 and 100 characters.</i>
+                      </span>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3 field-label-responsive">
+              <label for="password">Confirm Password</label>
+          </div>
+          <div class="col-md-6">
+              <div class="form-group">
+                  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                      <div class="input-group-addon" style="width: 2.6rem">
+                          <i class="fa fa-repeat"></i>
+                      </div>
+                      <input type="password" name="password-confirmation" class="form-control"
+                             id="password-confirm" placeholder="Password" formControlName="password-confirm" required>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-3" *ngIf="!rForm.controls['password-confirm'].valid && rForm.controls['password-confirm'].touched &&  rForm.get('password').value!=rForm.get('password-confirm').value">
+              <div class="form-control-feedback">
+                      <span class="text-danger align-middle">
+                          <i class="fa fa-close">Does not match password</i>
+                      </span>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+              <button type="submit" class="btn btn-success" [disabled]="!rForm.valid || rForm.get('password').value!=rForm.get('password-confirm').value"><i class="fa fa-user-plus"></i> Register</button>
+          </div>
+      </div>
+  </form>
+</div>
+
+<div *ngIf="_user.getUser()">
+    <div class="login-message">Welcome {{_user.getUser().name}}</div>
+    <app-home></app-home>
+</div>

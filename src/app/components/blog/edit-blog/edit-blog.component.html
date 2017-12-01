@@ -1,0 +1,26 @@
+<div class="container">
+    <h1 class="text-center">Create Blog Post</h1>
+    <hr/>
+    <form [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)">
+      <div class="form-group">
+        <label for="title">Title<sup>*</sup></label>
+        <input  type="text" name="title" formControlName="title" class="form-control" id="title" placeholder="Enter title here">
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="!rForm.controls['title'].valid && rForm.controls['title'].touched">Title is required</div>
+      
+      <div class="form-group">
+        <label for="message">Message<sup>*</sup></label>
+        <textarea  class="form-control" name="message" formControlName="message" id="message" rows="3"></textarea>
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="!rForm.controls['message'].valid && rForm.controls['message'].touched">Your message needs to be between 10 and 500 char long</div>
+      
+  
+      <div class="form-group">
+        <label for="image">New image</label>
+        <input  type="file" class="form-control-file" id="imageFile" name="imageFile" (change)="storeImage($event)">
+        <small id="fileHelp" class="form-text text-muted">Max size 2 mb</small>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!rForm.valid">Submit</button>
+    </form>
+    
+  </div>

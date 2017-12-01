@@ -1,0 +1,47 @@
+<div class="container">
+    <h1>Posts</h1>
+    <div *ngIf="!loading">
+        Loading posts
+    </div>
+    <div *ngIf="_blog.getBlog()">    
+        <div class="card card-blog" *ngFor="let blog of blogs" >
+            <div class="row">
+                <div class ="col-md-4 col-sm-4">
+                    <img style="width:100%" [src]="_blog.getImageUrl()+blog.image">
+                </div>
+                <div class ="col-md-8 col-sm-8">
+                    <h3><a routerLink="/blog/{{blog.id}}">{{blog.title}}</a></h3>
+                    <small>Written on {{blog.created_at}} by {{blog.user.name}}</small>
+                </div>
+            </div>
+        </div>
+        <div>
+            <nav aria-label="..." *ngIf="loading">
+                    <ul class="pagination">
+                        <li class="page-item">
+                                <button class="page-link" (click)="goToPage(0, 1)" ><i class="fa fa-angle-double-left" aria-hidden="true"></i></button>
+                        </li>
+                        <li class="page-item">
+                            <button class="page-link" [disabled]="page == 1" (click)="onPrev()" >Previous</button>
+                        </li>
+                        <div *ngFor="let pageNr of pages">
+                            <li *ngIf="!(pageNr==page)" (click)=goToPage((pageNr-1)*postPerPage,pageNr)>
+                                <button class="page-link">{{pageNr}}</button>
+                            </li>
+                            <li class = "page-item active" *ngIf="pageNr==page" (click)=goToPage((pageNr-1)*postPerPage,pageNr)>
+                                    <button class="page-link">{{pageNr}}</button>
+                            </li>
+                        </div>
+                        <li class="page-item">
+                                <button class="page-link" (click)="onNext()" [disabled]="blogStart == lastBlog">Next</button>
+                        </li>
+                        <li class="page-item">
+                                <button class="page-link" (click)="goToPage(lastBlog, lastPage)" ><i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+                        </li>
+                    </ul>
+                </nav>
+        </div>
+
+    </div>
+</div>
+

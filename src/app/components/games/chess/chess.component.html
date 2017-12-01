@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row header-chess">
+    <img src="/assets/images/games/chess/chesslogo.jpg" width="200px" height="200px">
+    Chess grandmaster
+  </div>
+  <div class="row">
+    <div class="col-md-10 col-sm-10">
+      <button class="btn btn-primary" (click)="newGame()">New Game</button>
+    </div>
+    <div class="col-md-1 col-sm-1 text-right">
+      Player:
+    </div>
+    <div class="col-md-1 col-sm-1">
+      <div class="squareSmall {{turn}}"></div>
+    </div>
+  </div>
+  <div class="center">
+    <promotion [color]="turn" *ngIf="promotion.value" (childEvent)="promote($event)"></promotion>
+    <div *ngIf="gameOver">{{gameOverMess}}</div>
+    <div>{{fenNot()}}</div>
+    <div class="row" *ngFor="let row1 of rows">
+      <div class="line">{{rowsInv[row1]+1}}</div>
+      <div *ngFor="let row2 of rows">
+        <div class="square {{colorize(row1,row2)}}" (click)="select(row1,row2)">
+            <div *ngIf="pieces[row1][row2]!='x'" class="image-piece">
+              <img src="/assets/images/games/chess/default/{{pieces[row1][row2].type}}{{pieces[row1][row2].color}}.png">
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class='row'>
+      <div class = "line"></div>
+      <div *ngFor="let row3 of rows">
+        <div class="letters">{{letters[row3]}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- [style.background-color]="background[row1][row2]" -->

@@ -1,0 +1,32 @@
+<a routerLink="/blog" class="btn btn-default">Go back</a>
+
+<div class="container" *ngIf="blog">
+  <div class="row">
+    <div class="col">
+      <h1>{{blog.title}}</h1>
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class ="col-md-8 col-sm-8">
+      <h3>{{blog.body}}</h3>
+    </div>
+    <div class ="col-md-4 col-sm-4">
+      
+      <img style="width:100%" [src]="_blog.getImageUrl()+blog.image">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <hr/>
+      <div *ngIf="_user.getUser() && blog.user.id == _user.getUser().id">
+        <a class="btn btn-success" routerLink="/editblog/{{blog.id}}">Edit</a>
+        <button class="btn btn-danger" (click)="delete()">Delete</button>        
+      </div>
+      <hr/>
+      <small>Written on {{blog.created_at}} by {{blog.user.name}}</small>
+      <hr/>
+    </div>
+  </div>
+</div>

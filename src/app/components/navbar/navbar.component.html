@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">Gameworlds</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbars">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/blog">Blog</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="/" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Games</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown07">
+            <a class="dropdown-item" routerLink="/games/lingo">Lingo</a>
+            <a class="dropdown-item" routerLink="/games/chess">Chess</a>
+            <a class="dropdown-item" routerLink="/games/sudoku">Sudoku</a>
+            <a class="dropdown-item" routerLink="/">Go</a>
+          </div>
+        </li>
+      </ul>
+      <ul *ngIf="!_user.getUser()" class="navbar-nav mr-right">
+        <li class="nav-item"><a routerLink="/login" class="nav-link">Login</a></li>
+        <li class="nav-item"><a routerLink="/register" class="nav-link">Register</a></li>
+      </ul>
+      <div class="nav-item dropdown" *ngIf="_user.getUser()">
+          <a class="nav-link dropdown-toggle custom" href="/" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{_user.getUser().name}}</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown08">
+            <a class="dropdown-item" routerLink="/profile">My profile</a>
+            <a class="dropdown-item" routerLink="/createblog">Create post</a>
+            <a class="dropdown-item" (click)="logout()">Logout</a>
+          </div>
+      </div>
+      
+    </div>
+    
+  </div>
+</nav>

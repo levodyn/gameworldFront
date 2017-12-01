@@ -1,0 +1,35 @@
+<div class="container">
+    <img src="/assets/images/games/lingo/lingoLogo2.jpg" width="30%">
+  <div class = "jumbotron">
+    <div class = "row formRow">
+      <div class="col-md-10 col-sm-10">
+        <form role="form" [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)">
+          <input type = "text" formControlName="guess">
+          <button class="btn btn-success" [disabled]="!rForm.valid || guessNr >4 || !calc || win">Guess</button>
+          <div class="form-control-feedback" *ngIf="err">
+              <span class="text-danger align-middle">
+                  <i class="fa fa-close">{{err}}</i>
+              </span>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-2 col-sm-2">
+          <button class="btn btn-primary" (click)="newGame()">New game</button>          
+      </div>
+    </div>
+    <div class="center" *ngIf="guess[4][4]">
+      <div class="row" *ngFor="let i of rows">
+        <div class ="column square" *ngFor="let j of rows">
+          <div [style.background-color]="sanitizer(colors[i][j])">
+            {{guess[i][j]}}
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="guessNr > 4 && !win && calc">
+        <div class = "column square loseRow" *ngFor="let j of rows">
+          {{answerSplit[j]}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
