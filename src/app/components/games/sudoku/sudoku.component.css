@@ -1,0 +1,39 @@
+.square{
+    width:70px;
+    height:70px;
+    color:black;
+    line-height: 70px;
+    text-align:center;
+    border: 0.1px solid black;
+}
+
+.center{
+    margin: 0 auto;
+    width:720px;
+ }
+
+ .header{
+    vertical-align: middle;
+    text-align: right;
+    height: 200px;
+    line-height: 200px;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.header-text{
+    margin-left: 100px;
+}
+
+.square.grey{
+    background-color: lightgrey;
+}
+
+
+.square.brown{
+    background-color: #C19A6B;
+}
+
+.buttons{
+    padding-bottom: 10px;
+}

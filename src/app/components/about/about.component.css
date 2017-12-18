@@ -1,0 +1,62 @@
+.container{
+    background-color: #4c4c4c;
+    color: white;
+    opacity: 0.9;
+    height:500px;
+    position: relative;
+}
+
+.container a{
+    color: white;
+}
+
+.logo{
+    max-height: 30px;
+}
+
+.rightbottom{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        display: block;
+}
+
+.pimg1{
+	position:relative;
+	opacity:0.70;
+	background-position:center;
+	background-size:cover;
+    background-repeat:no-repeat;
+	background-image:url('/assets/images/about/aboutme.jpg');
+    min-height:400px;
+    
+}
+
+.ptext:hover{
+    opacity: 0.2;
+}
+
+.ptext{
+	position:absolute;
+	top:50%;
+	width:100%;
+	text-align:center;
+	color:#000;
+	font-size:27px;
+	letter-spacing:8px;
+    text-transform:uppercase;
+    cursor: pointer;
+	
+}
+
+.ptext .border{
+	background-color:#111;
+	color:#fff;
+	padding:20px;
+	
+}
+
+.ptext .border.trans{
+	background-color:transparent;
+	
+}

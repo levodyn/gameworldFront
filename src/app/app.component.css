@@ -2,3 +2,14 @@
     min-height: 800px;
     margin-bottom: 20px;
 }
+
+.logo{
+    max-height: 30px;
+}
+
+.rightbottom{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        display: block;
+}

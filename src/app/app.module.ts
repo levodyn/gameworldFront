@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { AppComponent } from './app.component';
@@ -22,6 +23,8 @@ import { LingoComponent } from './components/games/lingo/lingo/lingo.component';
 import { ChessComponent } from './components/games/chess/chess.component';
 import { PromotionComponent } from './components/games/chess/promotion/promotion.component';
 import { SudokuComponent } from './components/games/sudoku/sudoku.component';
+import { AboutComponent } from './components/about/about.component';
+import { CvComponent } from './components/about/cv/cv.component';
 
 
 @NgModule({
@@ -39,14 +42,18 @@ import { SudokuComponent } from './components/games/sudoku/sudoku.component';
     LingoComponent,
     ChessComponent,
     PromotionComponent,
-    SudokuComponent
+    SudokuComponent,
+    AboutComponent,
+    CvComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
   providers: [UserService, BlogService],
   bootstrap: [AppComponent]

@@ -1,8 +1,10 @@
 import { NgModule }             from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, ActivatedRoute } from '@angular/router';
 
 //components
 import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './components/about/about.component';
+import { CvComponent } from './components/about/cv/cv.component';
 //blog
 import { BlogComponent } from './components/blog/blog/blog.component';
 import { BlogDetailComponent } from './components/blog/blog-detail/blog-detail.component';
@@ -19,31 +21,48 @@ import { SudokuComponent } from './components/games/sudoku/sudoku.component';
 const appRoutes:Routes = [
     {
         path:"",
-        component:HomeComponent
+        component:HomeComponent, 
+        pathMatch: 'full'
+    },
+    {
+        path:"about",
+        component:AboutComponent, 
+        pathMatch: 'full'
+    },
+    {
+        path:"cv",
+        component:CvComponent, 
+        pathMatch: 'full'
     },
     {
         path:"blog",
-        component:BlogComponent
+        component:BlogComponent, 
+        pathMatch: 'full'
     },
     {
         path:"blog/:id",
-        component:BlogDetailComponent
+        component:BlogDetailComponent,
+        pathMatch: 'full'
     },
     {
         path:"login",
-        component:LoginComponent
+        component:LoginComponent, 
+        pathMatch: 'full'
     },
     {
         path:"register",
-        component:RegisterComponent
+        component:RegisterComponent, 
+        pathMatch: 'full'
     },
     {
         path:"profile",
-        component:HomeComponent
+        component:HomeComponent, 
+        pathMatch: 'full'
     },
     {
         path:"createblog",
-        component:CreateBlogComponent
+        component:CreateBlogComponent, 
+        pathMatch: 'full'
     },
     {
         path:"editblog/:id",
@@ -51,15 +70,18 @@ const appRoutes:Routes = [
     },
     {
         path:"games/lingo",
-        component:LingoComponent
+        component:LingoComponent, 
+        pathMatch: 'full'
     },
     {
         path:"games/chess",
-        component:ChessComponent
+        component:ChessComponent, 
+        pathMatch: 'full'
     },
     {
         path:"games/sudoku",
-        component:SudokuComponent
+        component:SudokuComponent, 
+        pathMatch: 'full'
     }
 ];
 

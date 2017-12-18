@@ -1,3 +1,30 @@
-<p>
-  sudoku works!
-</p>
+<div class="container">
+  <div class="row header">
+    <img src="/assets/images/games/sudoku/sudokuLogo.png" width="200px" height="200px"/>
+    <span class="header-text">Can you solve it!!</span>
+  </div>
+  <div class="row buttons">
+    <div class="col-md-10 col-sm-10">
+      <button class="btn btn-danger" (click)="newGame()">New Game</button>
+      <button class="btn btn-primary" (click)="correct()">Correct?</button>
+    </div>
+  </div>
+  <div>
+      {{text}}
+  </div>
+
+  <div class="center">
+    <div class="row" *ngFor="let row1 of rows">
+      <div *ngFor="let row2 of rows">
+        <div class="square {{colorize(row1,row2)}}" (click) = "show(row1,row2)" (dblclick)= "hide(row1,row2)">
+          <span *ngIf="sudoku[row1][row2] > 0">{{sudoku[row1][row2]}}</span>
+          <div *ngIf="sudoku[row1][row2] < 0 && hidden[row1][row2]"> 
+            <select [(ngModel)]="guessSudoku[row1][row2]">
+                <option *ngFor="let option of options" [ngValue]="option">{{option}}</option>
+            </select> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
